@@ -1,0 +1,2 @@
+sentence {n}:
+{patient_name} has allergy to {allergy_name} since {allergy_start}.
