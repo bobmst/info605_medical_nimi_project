@@ -1,4 +1,4 @@
-from . import tables
+from . import tables, allergy
 from datetime import datetime
 
 tb_patient = tables.tb_patient
@@ -35,6 +35,9 @@ class Patient:
         self.HEALTHCARE_COVERAGE = tb_patient[
             tb_patient.Id == id
         ].HEALTHCARE_COVERAGE.values[0]
+
+        # set all child classes
+        self.ALLERGY = allergy.Allergies(id)
 
     def get_age(self):
         # TODO check the birthdate/deathdate format

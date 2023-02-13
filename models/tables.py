@@ -14,4 +14,4 @@ tb_allery = tb_allery.replace({np.nan: None})
 
 vw_patient_allergy = pd.merge(
     tb_patient, tb_allery, how="left", left_on="Id", right_on="PATIENT"
-)
+).replace({np.nan: None})
