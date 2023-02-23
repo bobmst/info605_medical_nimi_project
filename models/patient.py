@@ -49,3 +49,6 @@ class Patient:
             )
         else:
             return datetime.now() - datetime.strptime(self.BIRTHDATE, "%Y-%m-%d")
+
+
+    
