@@ -1,0 +1,15 @@
+{
+    "PATIENT_DEMOGRAPHICS": {
+        "part1": [
+            "The patient, {:FIRST_NAME:}, is a {:BIRTHDATE:} year old {:Gender:} who presents with {:HEALTHCARE_COVERAGE:}.",
+            "The patient, {:FIRST_NAME:}, is a {:BIRTHDATE:} year old {:Gender:}.",
+            "{:FIRST_NAME:} is a {:BIRTHDATE:} year old {:Gender:} patient."
+        ],
+        "part2": [
+            "Patient is {:Marital_Status:} and lives in {:City:}, {:State:}."
+        ],
+        "part3": [
+            "\n\n"
+        ]
+    }
+}

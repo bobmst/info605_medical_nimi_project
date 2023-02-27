@@ -56,12 +56,15 @@ class OracleConnection:
     def __init__(self):
         with SSH_DB() as server:
             self.engine = sqlalchemy.create_engine(ENGINE_PATH_WIN_AUTH)
-        # self.ssh_port = ssh_port
-        # engine = create_engine(ENGINE_PATH_WIN_AUTH)
-        # return engine
+        self.connect = None
 
     def __enter__(self):
-        return self.engine.connect()
+        return self.engine
+        # if not self.connect:
+        #     self.connect = self.engine.connect()
+        #     return self.connect
+        # else:
+        #     return self.connect
 
     def __exit__(self, exc_type, exc_value, traceback):
         self.engine.dispose()
