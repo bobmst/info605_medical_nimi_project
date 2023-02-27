@@ -1,0 +1,56 @@
+{
+    "sections": {
+        "DOCUMENT_HEADER": {
+            "frequency": "always"
+        },
+        "PATIENT": {
+            "frequency": "always",
+            "table": "MITRE_PATIENT",
+            "sections": {
+                "PATIENT_DEMOGRAPHICS": {
+                    "frequency": "always",
+                    "title": "Patient:\n"
+                },
+                "FEMALE_PATIENT": {
+                    "frequency": "always",
+                    "when": [
+                        "{:GENDER:}",
+                        "EQ",
+                        "F"
+                    ]
+                },
+                "ALLERGY": {
+                    "frequency": "always",
+                    "title": "ALLERGY_TITLE",
+                    "table": "MITRE_PATIENT_ALLERGY",
+                    "join": [
+                        "PATIENT_ID"
+                    ],
+                    "sections": {
+                        "ALLERGY_0": {
+                            "when": [
+                                "count",
+                                "EQ",
+                                0
+                            ]
+                        },
+                        "ALLERGY_1": {
+                            "when": [
+                                "count",
+                                "EQ",
+                                1
+                            ]
+                        },
+                        "ALLERGY_N": {
+                            "when": [
+                                "count",
+                                "GT",
+                                1
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,135 @@
+TODO check syntax
+{
+          "vars": {
+                "DCT": "2021-05-18",
+                "HOSPITAL_NAME": "Family Wellness Center",
+                "HOSPITAL_PHONE": "+1(222)333-4444"
+    },
+          "templates": {
+                "DOCUMENT_HEADER": [
+                      "{:HOSPITAL_NAME:}\n{:HOSPITAL_PHONE:}\n\n{:DCT:}\n\n",
+                      "MEDICAL REPORT\n\n",
+                      "PATIENT REPORT\n\n",
+                      "DISCHARGE REPORT\n================\n\n",
+                
+        ],
+                "DOCUMENT_FOOTER": [
+                      "\n\nFeel free to contact the Admin office if you have any questions.",
+                
+        ],
+                "PATIENT_DEMOGRAPHICS": {
+                      "part1": [
+                            "The patient, {:Patient_Name:}, is a {:Age:} year old {:Gender:} who presents with {:Complaint:}.",
+                            "The patient, {:Patient_Name:}, is a {:Age:} year old {:Gender:}.",
+                            "{:Patient_Name:} is a {:Age:} year old {:Gender:} patient.",
+                      
+            ],
+                      "part2": [
+                            "Patient is {:Marital Status:} and lives in {:City:}, {:State:}.",                  
+                      
+            ],
+                      "part3": [
+                            "\n\n",
+                      
+            ],
+                
+        },
+                "FEMALE_PATIENT": [
+            "\n\n*** Make sure to contact office in case of pregnancy *** \n\n"
+        ],
+                "ALLERGY_TITLE": [
+                      "ALLERGIES\n\n",
+                      "History of Allergies:\n",
+                
+        ],
+                "ALLERGY_0": [
+                      "Patient reports no known allergies.\n\n",
+                      "No allergies reported by the patient.\n\n",
+                      "Allergy assessment negative, patient reports no allergies.\n\n",
+                      "Patient has no documented allergies or adverse reactions to medications.\n\n",
+                      "No history of allergies or allergic reactions recorded.\n\n",
+                
+        ],
+                "ALLERGY_1": [
+                      "Patient reports an allergy to {:ALLERGY_DESCRIPTION:}.\n\n",
+                      "Patient has a documented allergy to {:ALLERGY_DESCRIPTION:}.\n\n",
+                      "Allergy assessment positive for {:ALLERGY_DESCRIPTION:}.\n\n",
+                
+        ],
+                "ALLERGY_N": [
+                
+        ]
+          
+    },
+          "sections":
+                "DOCUMENT_HEADER": {
+                      "frequency": "always",
+                
+    },
+                "PATIENT": {
+                      "frequency": "always",
+                      "table": "MITRE_PATIENT",
+                      "sections": {
+                            "PATIENT_DEMOGRAPHICS": {
+                                  "frequency": "always",
+                                   /* title can be either a string or a template */
+                                  "title": "Patient:\n"
+                            
+            },
+                            "FEMALE_PATIENT": {
+                                  "frequency": "always",
+                                  "when": [
+                    "{:GENDER:}",
+                    "EQ",
+                    "F"
+                ]
+                            
+            },
+                            "ALLERGY": {
+                                  "frequency": "always",
+                                   /* title can be either a string or a template */
+                                  "title": "ALLERGY_TITLE"
+                                  "table": "MITRE_PATIENT_ALLERGY"
+                                  "join": [
+                    "PATIENT_ID"
+                ]
+                                  "sections": {
+                                         /* conditional  sections - WHEN */
+                                        "ALLERGY_0": {
+                                              "when": [
+                            "count",
+                            "EQ",
+                            0
+                        ]
+                                        
+                    },
+                                        "ALLERGY_1": {
+                                              "when": [
+                            "count",
+                            "EQ",
+                            1
+                        ]
+                                        
+                    },
+                                        "ALLERGY_N": {
+                                              "when": [
+                            "count",
+                            "GT",
+                            1
+                        ]
+                                        
+                    }
+                                  
+                }
+                            
+            }
+                      
+        }
+                
+    },
+                "DOCUMENT_FOOTER": {
+                      "frequency": "random",
+                
+    }
+          
+}

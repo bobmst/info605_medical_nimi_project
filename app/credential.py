@@ -1,16 +1,16 @@
 # SSH informations
-HOST = ""
-REMOTE_PORT = 0
-REMOTE_ADDRESS = ""
-LOCAL_PORT = 0
-USERNAME = ""
-PASSWORD = ""
+SSH_HOST = ""
+SSH_REMOTE_PORT = 0
+SSH_REMOTE_ADDRESS = ""
+SSH_LOCAL_PORT = 0
+SSH_USERNAME = ""
+SSH_PASSWORD = ""
 
 # Oracle connection informations
-DIALECT = "oracle"
-SQL_DRIVER = "cx_oracle"
+DB_DIALECT = "oracle"
+DB_SQL_DRIVER = "cx_oracle"
 DB_USERNAME = ""  # enter your username
 DB_PASSWORD = ""  # enter your password
-HOST = ""  # enter the oracle db host url
-PORT = 0  # enter the oracle port number
-SERVICE = ""  # enter the oracle db service name
+DB_HOST = ""  # enter the oracle db host url
+DB_PORT = 0  # enter the oracle port number
+DB_SERVICE = ""  # enter the oracle db service name

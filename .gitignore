@@ -2,7 +2,8 @@
 
 # draft python codes
 draft.ipynb
-
+/app/credential.py
+/app/credential_test.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
